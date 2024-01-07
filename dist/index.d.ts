@@ -23,6 +23,7 @@ export interface BreadcrumbsProps {
     inactiveItemClassName?: string;
     activeItemStyle?: any | null;
     activeItemClassName?: string;
+    pathsToIgnore?: Array<string>;
 }
-declare const Breadcrumbs: ({ useDefaultStyle, rootLabel, omitRootLabel, labelsToUppercase, replaceCharacterList, transformLabel, omitIndexList, containerStyle, containerClassName, listStyle, listClassName, inactiveItemStyle, inactiveItemClassName, activeItemStyle, activeItemClassName, }: BreadcrumbsProps) => React.JSX.Element | null;
+declare const Breadcrumbs: ({ useDefaultStyle, rootLabel, omitRootLabel, labelsToUppercase, replaceCharacterList, transformLabel, omitIndexList, containerStyle, containerClassName, listStyle, listClassName, inactiveItemStyle, inactiveItemClassName, activeItemStyle, activeItemClassName, pathsToIgnore }: BreadcrumbsProps) => React.JSX.Element | null;
 export default Breadcrumbs;

@@ -113,6 +113,7 @@ export interface BreadcrumbsProps {
 
   /** Classes to be used for the active breadcrumb list item */
   activeItemClassName?: string;
+  pathsToIgnore?: Array<string>;
 }
 
 /**
@@ -147,22 +148,28 @@ const Breadcrumbs = ({
   inactiveItemClassName = "",
   activeItemStyle = null,
   activeItemClassName = "",
+  pathsToIgnore=[]
 }: BreadcrumbsProps) => {
   const router = usePathname();
   const [breadcrumbs, setBreadcrumbs] = useState<Array<Breadcrumb> | null>(
     null
   );
-  const [pathToIgnore, setPathToIgnore] = useState<boolean>(false);
+  const [pathToIgnore, setPathToIgnore] = useState<boolean>(true);
 
   useEffect(() => {
     if (router) {
+      setPathToIgnore(true)
       const linkPath = router.split("/");
       linkPath.shift();
 
       const pathArray = linkPath.map((path, i) => {
+        const pathHref = "/" + linkPath.slice(0, i + 1).join("/");
+        if(pathsToIgnore.includes(pathHref)){
+          setPathToIgnore(false)
+        }
         return {
           breadcrumb: path,
-          href: "/" + linkPath.slice(0, i + 1).join("/"),
+          href: pathHref,
         };
       });
 

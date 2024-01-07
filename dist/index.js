@@ -50,18 +50,23 @@ const convertBreadcrumb = (title, toUpperCase, replaceCharacterList, transformLa
 const Breadcrumbs = ({ useDefaultStyle = false, rootLabel = "Home", omitRootLabel = false, labelsToUppercase = false, replaceCharacterList = [
     { from: "-", to: " " },
     { from: "_", to: " " },
-], transformLabel = undefined, omitIndexList = undefined, containerStyle = null, containerClassName = "", listStyle = null, listClassName = "", inactiveItemStyle = null, inactiveItemClassName = "", activeItemStyle = null, activeItemClassName = "", }) => {
+], transformLabel = undefined, omitIndexList = undefined, containerStyle = null, containerClassName = "", listStyle = null, listClassName = "", inactiveItemStyle = null, inactiveItemClassName = "", activeItemStyle = null, activeItemClassName = "", pathsToIgnore = [] }) => {
     const router = (0, navigation_1.usePathname)();
     const [breadcrumbs, setBreadcrumbs] = (0, react_1.useState)(null);
-    const [pathToIgnore, setPathToIgnore] = (0, react_1.useState)(false);
+    const [pathToIgnore, setPathToIgnore] = (0, react_1.useState)(true);
     (0, react_1.useEffect)(() => {
         if (router) {
+            setPathToIgnore(true);
             const linkPath = router.split("/");
             linkPath.shift();
             const pathArray = linkPath.map((path, i) => {
+                const pathHref = "/" + linkPath.slice(0, i + 1).join("/");
+                if (pathsToIgnore.includes(pathHref)) {
+                    setPathToIgnore(false);
+                }
                 return {
                     breadcrumb: path,
-                    href: "/" + linkPath.slice(0, i + 1).join("/"),
+                    href: pathHref,
                 };
             });
             setBreadcrumbs(pathArray);
