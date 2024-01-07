@@ -161,12 +161,11 @@ const Breadcrumbs = ({
       setPathToIgnore(true)
       const linkPath = router.split("/");
       linkPath.shift();
-
+      if(pathsToIgnore.includes(linkPath[linkPath.length-1])){
+        setPathToIgnore(false)
+      }
       const pathArray = linkPath.map((path, i) => {
         const pathHref = "/" + linkPath.slice(0, i + 1).join("/");
-        if(pathsToIgnore.includes(pathHref)){
-          setPathToIgnore(false)
-        }
         return {
           breadcrumb: path,
           href: pathHref,
