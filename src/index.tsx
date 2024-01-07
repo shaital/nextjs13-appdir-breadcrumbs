@@ -181,10 +181,10 @@ const Breadcrumbs = ({
   if (!breadcrumbs) {
     return null;
   }
-  if (!pathToIgnore) {
-    setPathToIgnore(true)
-    return null;
-  }
+  // if (!pathToIgnore) {
+  //   setPathToIgnore(true)
+  //   return null;
+  // }
 
   return (
     <nav
