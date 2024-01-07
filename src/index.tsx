@@ -179,13 +179,9 @@ const Breadcrumbs = ({
   if (!breadcrumbs) {
     return null;
   }
-  if (!pathToIgnore) {
-    setPathToIgnore(true)
-    return null;
-  }
 
   return (
-    <nav
+    pathToIgnore && <nav
       style={containerStyle}
       className={containerClassName}
       aria-label="breadcrumbs"

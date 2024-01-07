@@ -47,11 +47,7 @@ const Breadcrumbs = ({ useDefaultStyle = false, rootLabel = "Home", omitRootLabe
     if (!breadcrumbs) {
         return null;
     }
-    if (!pathToIgnore) {
-        setPathToIgnore(true);
-        return null;
-    }
-    return (React.createElement("nav", { style: containerStyle, className: containerClassName, "aria-label": "breadcrumbs" },
+    return (pathToIgnore && React.createElement("nav", { style: containerStyle, className: containerClassName, "aria-label": "breadcrumbs" },
         React.createElement("ol", { style: listStyle, className: useDefaultStyle ? "_2jvtI" : listClassName },
             !omitRootLabel && (React.createElement("li", { style: inactiveItemStyle, className: inactiveItemClassName },
                 React.createElement(Link, { href: "/" }, convertBreadcrumb(rootLabel || "Home", labelsToUppercase, replaceCharacterList, transformLabel)))),
