@@ -161,9 +161,7 @@ const Breadcrumbs = ({
       setPathToIgnore(true)
       const linkPath = router.split("/");
       linkPath.shift();
-      console.log(linkPath[linkPath.length-1])
-      console.log("router",router)
-      if(pathsToIgnore.includes(linkPath[linkPath.length-1])){
+      if(pathsToIgnore.includes(router)){
         setPathToIgnore(false)
       }
       const pathArray = linkPath.map((path, i) => {
@@ -181,10 +179,10 @@ const Breadcrumbs = ({
   if (!breadcrumbs) {
     return null;
   }
-  // if (!pathToIgnore) {
-  //   setPathToIgnore(true)
-  //   return null;
-  // }
+  if (!pathToIgnore) {
+    setPathToIgnore(true)
+    return null;
+  }
 
   return (
     <nav

@@ -59,9 +59,7 @@ const Breadcrumbs = ({ useDefaultStyle = false, rootLabel = "Home", omitRootLabe
             setPathToIgnore(true);
             const linkPath = router.split("/");
             linkPath.shift();
-            console.log(linkPath[linkPath.length - 1]);
-            console.log("router", router);
-            if (pathsToIgnore.includes(linkPath[linkPath.length - 1])) {
+            if (pathsToIgnore.includes(router)) {
                 setPathToIgnore(false);
             }
             const pathArray = linkPath.map((path, i) => {
@@ -75,6 +73,10 @@ const Breadcrumbs = ({ useDefaultStyle = false, rootLabel = "Home", omitRootLabe
         }
     }, [router]);
     if (!breadcrumbs) {
+        return null;
+    }
+    if (!pathToIgnore) {
+        setPathToIgnore(true);
         return null;
     }
     return (react_1.default.createElement("nav", { style: containerStyle, className: containerClassName, "aria-label": "breadcrumbs" },
