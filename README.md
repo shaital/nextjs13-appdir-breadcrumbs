@@ -1,3 +1,14 @@
+# Forked in order to add ablity to ignore some paths
+For example
+```tsx
+pathsToIgnore={['/he','/he/member-club','/he/benfits','/he/about','/he/contact']}
+```
+## Install
+```bash
+yarn add https://github.com/shaital/nextjs13-appdir-breadcrumbs.git
+```
+
+
 # @marketsystems/nextjs13-appdir-breadcrumbs
 
 Updated version for nextjs13 with appdir, using new next/navigation router and Link element without inner A tag:
