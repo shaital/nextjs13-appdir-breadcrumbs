@@ -179,7 +179,10 @@ const Breadcrumbs = ({
   if (!breadcrumbs) {
     return null;
   }
-
+  if (!pathToIgnore) {
+    return null;
+  }
+console.log("pathToIgnore",pathToIgnore)
   return (
     pathToIgnore && <nav
       style={containerStyle}
