@@ -152,6 +152,7 @@ const Breadcrumbs = ({
   const [breadcrumbs, setBreadcrumbs] = useState<Array<Breadcrumb> | null>(
     null
   );
+  const [pathToIgnore, setPathToIgnore] = useState<boolean>(false);
 
   useEffect(() => {
     if (router) {
@@ -170,6 +171,9 @@ const Breadcrumbs = ({
   }, [router]);
 
   if (!breadcrumbs) {
+    return null;
+  }
+  if (!pathToIgnore) {
     return null;
   }
 

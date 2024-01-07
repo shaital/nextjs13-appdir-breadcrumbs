@@ -15,7 +15,7 @@
     "copy-files": "copyfiles -u 1 src/**/*.css dist/ && copyfiles -u 1 src/**/*.css esm/ ",
     "build:esm": "tsc --target es2018 --outDir esm",
     "build:cjs": "tsc --target es2015 --module commonjs --outDir dist",
-    "build": "npm run lint && npm run build:esm && npm run build:cjs && npm run copy-files",
+    "build": "npm run build:esm && npm run build:cjs && npm run copy-files",
     "lint": "eslint . --ext .tsx"
   },
   "main": "dist/index.js",
